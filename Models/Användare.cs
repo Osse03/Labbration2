@@ -13,5 +13,10 @@ namespace Entiteter
         public string BetalningsMetod { get; set; }
         public List<Hyra> HyresHistorik { get; set; }
 
+        public Användare()
+        {
+            HyresHistorik = new List<Hyra>();
+        }
+
     }
 }
