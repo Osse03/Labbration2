@@ -26,12 +26,6 @@ namespace PrestationsLager
         }
         private void UthyrningForm_Load(object sender, EventArgs e)
         {
-            if (inloggadAnvändare == null)
-            {
-                MessageBox.Show("Ingen användare är inloggad. Vänligen logga in igen.");
-                this.Close();
-                return;
-            }
 
             lblFullNamn.Text = $"Namn: {inloggadAnvändare.FullNamn}";
             lblEpost.Text = $"E-post: {inloggadAnvändare.Epost}";
@@ -71,7 +65,7 @@ namespace PrestationsLager
             listHyreshistorik.Columns.Add("Kostnad", 100);
 
             listHyreshistorik.Items.Clear();
-            if (inloggadAnvändare != null && inloggadAnvändare.HyresHistorik != null)
+            if (inloggadAnvändare != null && inloggadAnvändare.HyresHistorik != null) // för att ny användare ska kunna logga in utan historik
             {
                 listHyreshistorik.Items.Clear();
                 foreach (var hyra in inloggadAnvändare.HyresHistorik)

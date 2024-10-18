@@ -41,7 +41,7 @@ namespace InMemoryDatabase
                 Användares.Add(new Användare
                 {
                     AnvändareID = "A123",
-                    FullNamn = "Ali Chorba",
+                    FullNamn = "Johannes Sahlin",
                     Lösenord = "12345",
                     Epost = "AliChorba@icloud.com",
                     BetalningsMetod = "Klarna",
@@ -118,7 +118,7 @@ namespace InMemoryDatabase
             // Initiera stationer EN GÅNG
             Stations = new List<Station>
             {
-             #region Göteborg Station
+                #region Göteborg Station
 
                 new Station
                 {
@@ -152,6 +152,7 @@ namespace InMemoryDatabase
                 },
 
                 #endregion
+
                 #region Borås Station
                 new Station
                 {
@@ -178,7 +179,7 @@ namespace InMemoryDatabase
                          },
                           new Fordon
                          {
-                            FordonID = 2,
+                            FordonID = 3,
                             Typ ="El Scooter",
                             BatteriNivå = 100,
                             Status = "Tillgänglig"
@@ -189,6 +190,7 @@ namespace InMemoryDatabase
                 },
 
                 #endregion
+
                 #region Uppsala Station
                 new Station
                 {
@@ -218,6 +220,7 @@ namespace InMemoryDatabase
                 },
 
                 #endregion
+
                 #region Jokkmokk Station
                 new Station
                 {

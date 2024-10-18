@@ -19,6 +19,10 @@ namespace InMemoryDatabase
         {
             return _database.HämtaAnvändare();
         }
+        public Användare HittaAnvändare(string epost, string lösenord)
+        {
+            return _database.Användares.FirstOrDefault(a => a.Epost == epost && a.Lösenord == lösenord);
+        }
 
         public void LäggTillNyAnvändare(Användare användare)
         {
