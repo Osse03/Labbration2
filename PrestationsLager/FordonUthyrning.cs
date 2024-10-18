@@ -65,7 +65,7 @@ namespace PrestationsLager
             listHyreshistorik.Columns.Add("Kostnad", 100);
 
             listHyreshistorik.Items.Clear();
-            if (inloggadAnvändare != null && inloggadAnvändare.HyresHistorik != null) // för att ny användare ska kunna logga in utan historik
+            if (inloggadAnvändare != null && inloggadAnvändare.HyresHistorik != null) // för att ny användare ska kunna logga in utan historik.
             {
                 listHyreshistorik.Items.Clear();
                 foreach (var hyra in inloggadAnvändare.HyresHistorik)
