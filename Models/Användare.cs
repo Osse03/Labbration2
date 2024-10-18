@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,10 +12,13 @@ namespace Entiteter
         public string BetalningsMetod { get; set; }
         public List<Hyra> HyresHistorik { get; set; }
 
+
         public Användare()
         {
             HyresHistorik = new List<Hyra>();
         }
+
+
 
     }
 }
