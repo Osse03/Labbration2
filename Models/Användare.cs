@@ -17,7 +17,5 @@ namespace Entiteter
         {
             HyresHistorik = new List<Hyra>();
         }
-
-
     }
 }

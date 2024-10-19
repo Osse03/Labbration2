@@ -104,12 +104,6 @@ namespace PrestationsLager
         {
             if (listStationer.SelectedItems.Count > 0 && listFordon.SelectedItems.Count > 0)
             {
-                // Kontrollera om användaren redan har en aktiv hyra
-                if (inloggadAnvändare.HyresHistorik.Any(hyra => hyra.SlutTid == null))
-                {
-                    MessageBox.Show("Du har redan en aktiv hyra. Avsluta den innan du hyr ett nytt fordon.", "Fel");
-                    return;
-                }
 
                 int selectedStationID = int.Parse(listStationer.SelectedItems[0].SubItems[0].Text);
                 int selectedFordonID = int.Parse(listFordon.SelectedItems[0].SubItems[0].Text);
@@ -119,6 +113,18 @@ namespace PrestationsLager
 
                 if (valtFordon != null)
                 {
+                    if (valtFordon.Status == "Underhåll")
+                    {
+                        MessageBox.Show("Detta fordon är under underhåll och kan inte hyras.", "Fel");
+                        return;  // Avsluta om fordonet är under underhåll
+                    }
+
+                    if (aktuellHyra != null)
+                    {
+                        MessageBox.Show("Du har redan en aktiv hyra ");
+                        return ;
+                    }
+
                     aktuellHyra = new Hyra
                     {
                         HyraID = _logicLayer.GenereraNyHyraID(),
@@ -134,6 +140,7 @@ namespace PrestationsLager
                     MessageBox.Show($"Du har hyrt {valtFordon.Typ}.", "Hyra lyckades");
 
                 }
+
 
             }
             else

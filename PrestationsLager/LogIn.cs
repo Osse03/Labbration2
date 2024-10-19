@@ -17,28 +17,19 @@ namespace PrestationsLager
         private void button1_Click_1(object sender, EventArgs e)
         {
             var användareLista = logicLayer.HämtaAllaAnvändare();
-            var inloggadAnvändare = användareLista.FirstOrDefault(a => a.FullNamn == textNamn.Text && a.Lösenord == textLösenord.Text);
+            var inloggadAnvändare = användareLista
+                .FirstOrDefault(a => a.FullNamn == textNamn.Text && a.Lösenord == textLösenord.Text);
 
-            var systemAdminLista = logicLayer.InitieraSystemAdmins();
-
-            var Nyanvändare = användareLista.FirstOrDefault(a => a.FullNamn == textNamn.Text && a.Lösenord == textLösenord.Text);
-            var systemAdmin = systemAdminLista.FirstOrDefault(a => a.FullNamn == textNamn.Text && a.Lösenord == textLösenord.Text);
-
-            if (Nyanvändare != null)
+            if (inloggadAnvändare != null)
             {
-                new FordonUthyrning(logicLayer, inloggadAnvändare).Show();  // Skickar LogicLayer och inloggad användare
+                // Visa uthyrningsformuläret och skicka användaren
+                FordonUthyrning uthyrningsForm = new FordonUthyrning(logicLayer, inloggadAnvändare);
+                uthyrningsForm.Show();
                 this.Hide();
-            }
-            else if (systemAdmin != null)
-            {
-                new FordonStationsHantering(logicLayer).Show();  // Skickar LogicLayer
-                this.Hide();
-                MessageBox.Show("1. Vid Uppdatering måste du fylla i alla fält och klicka på FordonID." +
-                                "\n 2. För att ta bort måste du klicka på FordonID och fylla i FordonID-fältet.");
             }
             else
             {
-                MessageBox.Show("Ditt fulla namn eller lösenord är fel, försök igen");
+                MessageBox.Show("Fel användarnamn eller lösenord. Försök igen.");
                 textNamn.Clear();
                 textLösenord.Clear();
                 textNamn.Focus();
