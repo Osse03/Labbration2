@@ -6,7 +6,7 @@ using InMemoryDatabase;
 
 namespace InMemoryDatabase
 {
-    public class LogicLayer//mellanhand mellan  databas och UI. Den hanterar logik och dataåterställning.
+    public class LogicLayer
     {
         private Database _database;
         public LogicLayer(Database database)

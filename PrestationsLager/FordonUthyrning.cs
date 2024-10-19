@@ -31,7 +31,7 @@ namespace PrestationsLager
             lblEpost.Text = $"E-post: {inloggadAnvändare.Epost}";
 
             // Ladda hyreshistorik
-            LaddaHyreshistorik();
+            LaddaHyreshistorik(inloggadAnvändare);
         }
 
         private void LaddaStationer()
@@ -57,29 +57,27 @@ namespace PrestationsLager
             }
         }
 
-        private void LaddaHyreshistorik()
+        private void LaddaHyreshistorik(Användare användare)
         {
             listHyreshistorik.Columns.Add("HyraID", 100);
             listHyreshistorik.Columns.Add("Starttid", 150);
             listHyreshistorik.Columns.Add("Sluttid", 150);
             listHyreshistorik.Columns.Add("Kostnad", 100);
 
+            // Fyll i användarens information i UI:t
+            lblFullNamn.Text = användare.FullNamn;
+            lblEpost.Text = användare.Epost;
+
+            // Visa hyreshistorik
             listHyreshistorik.Items.Clear();
-            if (inloggadAnvändare != null && inloggadAnvändare.HyresHistorik != null) // för att ny användare ska kunna logga in utan historik.
+
+            foreach (var hyra in användare.HyresHistorik)
             {
-                listHyreshistorik.Items.Clear();
-                foreach (var hyra in inloggadAnvändare.HyresHistorik)
-                {
-                    ListViewItem item = new ListViewItem(hyra.HyraID.ToString());
-                    item.SubItems.Add(hyra.StartTid.ToString());
-                    item.SubItems.Add(hyra.SlutTid.ToString());
-                    item.SubItems.Add(hyra.Kostnad.ToString("F2"));
-                    listHyreshistorik.Items.Add(item);
-                }
-            }
-            else
-            {
-                MessageBox.Show("Ingen hyreshistorik tillgänglig.");
+                ListViewItem item = new ListViewItem(hyra.HyraID.ToString());
+                item.SubItems.Add(hyra.StartTid.ToString());
+                item.SubItems.Add(hyra.SlutTid.ToString());
+                item.SubItems.Add(hyra.Kostnad.ToString());
+                listHyreshistorik.Items.Add(item);
             }
         }
 
@@ -106,6 +104,13 @@ namespace PrestationsLager
         {
             if (listStationer.SelectedItems.Count > 0 && listFordon.SelectedItems.Count > 0)
             {
+                // Kontrollera om användaren redan har en aktiv hyra
+                if (inloggadAnvändare.HyresHistorik.Any(hyra => hyra.SlutTid == null))
+                {
+                    MessageBox.Show("Du har redan en aktiv hyra. Avsluta den innan du hyr ett nytt fordon.", "Fel");
+                    return;
+                }
+
                 int selectedStationID = int.Parse(listStationer.SelectedItems[0].SubItems[0].Text);
                 int selectedFordonID = int.Parse(listFordon.SelectedItems[0].SubItems[0].Text);
 
@@ -127,7 +132,9 @@ namespace PrestationsLager
                     UppdateraFordon(selectedStationID);
 
                     MessageBox.Show($"Du har hyrt {valtFordon.Typ}.", "Hyra lyckades");
+
                 }
+
             }
             else
             {
@@ -148,7 +155,7 @@ namespace PrestationsLager
             aktuellHyra.Kostnad = timmar * 100;  // Exempel på pris per timme
 
             inloggadAnvändare.HyresHistorik.Add(aktuellHyra);
-            LaddaHyreshistorik();
+            LaddaHyreshistorik(inloggadAnvändare);
 
             var stationLista = _logicLayer.HämtaStationer().Select(s => $"{s.StationID} - {s.Adress}").ToList();
             string stationText = string.Join("\n", stationLista);
@@ -163,7 +170,7 @@ namespace PrestationsLager
                     UppdateraStationer();
                     UppdateraFordon(stationID);
 
-                    MessageBox.Show($"Hyran är avslutad. Kostnad: {aktuellHyra.Kostnad} SEK.", "Hyra avslutad");
+                    MessageBox.Show($"Hyran är avslutad. Kostnad: {aktuellHyra.Kostnad:C} SEK.", "Hyra avslutad");
                 }
             }
 

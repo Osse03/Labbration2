@@ -17,8 +17,6 @@ namespace InMemoryDatabase
 
         private static int nästaHyraID = 2;  // Startar från 2 och ökar för varje ny hyra
 
-        // Andra delar av din databas-klass
-
         public static int GenereraNyHyraID()
         {
             return nästaHyraID++;
@@ -43,7 +41,7 @@ namespace InMemoryDatabase
                     AnvändareID = "A123",
                     FullNamn = "Johannes Sahlin",
                     Lösenord = "12345",
-                    Epost = "AliChorba@icloud.com",
+                    Epost = "JohannesSahlin@icloud.com",
                     BetalningsMetod = "Klarna",
                     HyresHistorik = new List<Hyra>
                     {
@@ -61,7 +59,7 @@ namespace InMemoryDatabase
                 Användares.Add(new Användare
                 {
                     AnvändareID = "D123",
-                    FullNamn = "Alex Nilsson",
+                    FullNamn = "Ali",
                     Lösenord = "123456",
                     Epost = "AlexNilsson@icloud.com",
                     BetalningsMetod = "MasterCard",

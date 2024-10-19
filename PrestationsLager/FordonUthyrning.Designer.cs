@@ -145,14 +145,14 @@
             // 
             listHyreshistorik.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             listHyreshistorik.GridLines = true;
-            listHyreshistorik.Location = new Point(12, 72);
+            listHyreshistorik.Location = new Point(12, 103);
             listHyreshistorik.Name = "listHyreshistorik";
             listHyreshistorik.Size = new Size(424, 184);
             listHyreshistorik.TabIndex = 28;
             listHyreshistorik.UseCompatibleStateImageBehavior = false;
             listHyreshistorik.View = View.Details;
             // 
-            // UthyrningForm
+            // FordonUthyrning
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -169,7 +169,7 @@
             Controls.Add(listFordon);
             FormBorderStyle = FormBorderStyle.None;
             Margin = new Padding(3, 2, 3, 2);
-            Name = "UthyrningForm";
+            Name = "FordonUthyrning";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "UthyrningForm";
             Load += UthyrningForm_Load;
