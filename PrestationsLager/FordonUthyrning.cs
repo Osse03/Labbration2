@@ -122,7 +122,7 @@ namespace PrestationsLager
                     if (aktuellHyra != null)
                     {
                         MessageBox.Show("Du har redan en aktiv hyra ");
-                        return ;
+                        return;
                     }
 
                     aktuellHyra = new Hyra
