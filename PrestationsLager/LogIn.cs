@@ -17,8 +17,11 @@ namespace PrestationsLager
         private void button1_Click_1(object sender, EventArgs e)
         {
             var användareLista = logicLayer.HämtaAllaAnvändare();
-            var inloggadAnvändare = användareLista
-                .FirstOrDefault(a => a.FullNamn == textNamn.Text && a.Lösenord == textLösenord.Text);
+            var systemAdminLista = logicLayer.InitieraSystemAdmins();
+
+            var inloggadAnvändare = användareLista.FirstOrDefault(a => a.FullNamn == textNamn.Text && a.Lösenord == textLösenord.Text);
+
+            var systemadmin = systemAdminLista.FirstOrDefault(a => a.FullNamn == textNamn.Text && a.Lösenord == textLösenord.Text);
 
             if (inloggadAnvändare != null)
             {
@@ -26,6 +29,14 @@ namespace PrestationsLager
                 FordonUthyrning uthyrningsForm = new FordonUthyrning(logicLayer, inloggadAnvändare);
                 uthyrningsForm.Show();
                 this.Hide();
+            }
+            else if (systemadmin != null)
+            {
+                new FordonStationsHantering(logicLayer).Show();
+                this.Hide();
+
+                MessageBox.Show("1. Vid uppdatering måste du fylla i alla fält och klicka på FordonID " +
+                    "\n 2. Att ta bort måste du fylla i FordonID och klicka på FordonID");
             }
             else
             {

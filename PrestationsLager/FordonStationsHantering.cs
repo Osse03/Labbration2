@@ -149,6 +149,8 @@ namespace PrestationsLager
                         txtTyp.Clear();
                         txtBatteriNivå.Clear();
                         txtStatus.Clear();
+
+                        MessageBox.Show("Uppdatering är genomförd");
                     }
                 }
             }
@@ -188,6 +190,8 @@ namespace PrestationsLager
                         txtTyp.Clear();
                         txtBatteriNivå.Clear();
                         txtStatus.Clear();
+
+                        MessageBox.Show("Fordon är tillagd");
                     }
                     else
                     {
@@ -223,6 +227,7 @@ namespace PrestationsLager
                         UppdateraFordonLista(valdStation);  // Uppdatera ListView
                         SparaÄndringar(valdStation);  // Spara ändringar
                     }
+                    MessageBox.Show("Fordon är borttagen");
                 }
             }
             else
