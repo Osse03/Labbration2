@@ -14,7 +14,7 @@ namespace PrestationsLager
         }
 
 
-        private void button1_Click_1(object sender, EventArgs e)
+        private void LogIn_Click_1(object sender, EventArgs e)
         {
             var användareLista = logicLayer.HämtaAllaAnvändare();
             var systemAdminLista = logicLayer.InitieraSystemAdmins();

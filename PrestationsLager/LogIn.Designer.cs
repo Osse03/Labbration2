@@ -87,7 +87,7 @@
             EfterLogIN.TabIndex = 8;
             EfterLogIN.Text = "LOG IN";
             EfterLogIN.UseVisualStyleBackColor = false;
-            EfterLogIN.Click += button1_Click_1;
+            EfterLogIN.Click += LogIn_Click_1;
             // 
             // label2
             // 
