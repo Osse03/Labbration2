@@ -25,9 +25,7 @@ namespace PrestationsLager
 
             if (inloggadAnvändare != null)
             {
-                // Visa uthyrningsformuläret och skicka användaren
-                FordonUthyrning uthyrningsForm = new FordonUthyrning(logicLayer, inloggadAnvändare);
-                uthyrningsForm.Show();
+                new FordonUthyrning(logicLayer, inloggadAnvändare).Show();
                 this.Hide();
             }
             else if (systemadmin != null)
@@ -36,7 +34,7 @@ namespace PrestationsLager
                 this.Hide();
 
                 MessageBox.Show("1. Vid uppdatering måste du fylla i alla fält och klicka på FordonID " +
-                    "\n 2. Att ta bort måste du fylla i FordonID och klicka på FordonID");
+                    "\n 2. För att ta bort måste du fylla i FordonID och klicka på FordonID");
             }
             else
             {
