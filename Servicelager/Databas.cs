@@ -9,7 +9,7 @@ namespace InMemoryDatabase
     {
 
         internal List<Fordon> Fordons = new List<Fordon>();
-        public List<Station> Stations = new List<Station>();
+        internal List<Station> Stations = new List<Station>();
         internal List<Hyra> Hyras = new List<Hyra>();
         internal List<Användare> Användares = new List<Användare>();
         internal List<SystemAdmin> SystemAdmins = new List<SystemAdmin>();
