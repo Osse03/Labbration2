@@ -15,7 +15,7 @@ namespace Entiteter
 
         public Hyra Hyra { get; set; }
 
-        public Användare Användare { get; set; }
+    
 
     }
 }
