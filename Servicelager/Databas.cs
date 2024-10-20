@@ -17,98 +17,6 @@ namespace InMemoryDatabase
 
         private static int nästaHyraID = 2;  // Startar från 2 och ökar för varje ny hyra
 
-        public static int GenereraNyHyraID()
-        {
-            return nästaHyraID++;
-        }
-
-        public List<Användare> HämtaAnvändare()
-        {
-            return Användares;
-        }
-
-        public void LäggTillAnvändare(Användare användare)
-        {
-            Användares.Add(användare);
-        }
-
-        public void InitieraAnvändare()
-        {
-            if (Användares.Count == 0)
-            {
-                Användares.Add(new Användare
-                {
-                    AnvändareID = "A123",
-                    FullNamn = "Johannes Sahlin",
-                    Lösenord = "12345",
-                    Epost = "JohannesSahlin@icloud.com",
-                    BetalningsMetod = "Klarna",
-                    HyresHistorik = new List<Hyra>
-                    {
-                         new Hyra
-                         {
-                             HyraID = 1,
-                             Kostnad = 55.95,
-                              StartTid = DateTime.Now.AddMonths(-1),
-                              SlutTid = DateTime.Now
-                    }
-                          }
-
-                });
-
-                Användares.Add(new Användare
-                {
-                    AnvändareID = "D123",
-                    FullNamn = "Ali",
-                    Lösenord = "123456",
-                    Epost = "AlexNilsson@icloud.com",
-                    BetalningsMetod = "MasterCard",
-                    HyresHistorik = new List<Hyra>
-                    {
-                         new Hyra
-                         {
-                               HyraID = 1,
-                               Kostnad = 200.10,
-                               StartTid = DateTime.Now.AddMonths(-2),
-                                SlutTid = DateTime.Now
-                         }
-                    }
-                });
-            }
-
-
-        }
-
-        public List<SystemAdmin> InitieraSystemAdmin()
-        {
-
-            List<SystemAdmin> systemAdmins = new List<SystemAdmin>()
-            {
-
-                new SystemAdmin
-                {
-                    SystemAdminID = "O123",
-                    FullNamn = "Osama Alhussain",
-                    Lösenord = "1234567",
-                    Epost = "osamaalhussain@icloud.com",
-
-                },
-
-                new SystemAdmin
-                {
-                    SystemAdminID = "V123",
-                    FullNamn = "Varto Kaka",
-                    Lösenord = "123456",
-                    Epost = "vartokaka@icloud.com",
-                }
-
-
-
-            };
-
-            return systemAdmins;
-
-        }
 
         // för att skapa station en gång!!
         public Database()
@@ -268,6 +176,98 @@ namespace InMemoryDatabase
 
 
             };
+        }
+        public static int GenereraNyHyraID()
+        {
+            return nästaHyraID++;
+        }
+
+        public List<Användare> HämtaAnvändare()
+        {
+            return Användares;
+        }
+
+        public void LäggTillAnvändare(Användare användare)
+        {
+            Användares.Add(användare);
+        }
+
+        public void InitieraAnvändare()
+        {
+            if (Användares.Count == 0)
+            {
+                Användares.Add(new Användare
+                {
+                    AnvändareID = "A123",
+                    FullNamn = "Johannes Sahlin",
+                    Lösenord = "12345",
+                    Epost = "JohannesSahlin@icloud.com",
+                    BetalningsMetod = "Klarna",
+                    HyresHistorik = new List<Hyra>
+                    {
+                         new Hyra
+                         {
+                             HyraID = 1,
+                             Kostnad = 55.95,
+                              StartTid = DateTime.Now.AddMonths(-1),
+                              SlutTid = DateTime.Now
+                    }
+                          }
+
+                });
+
+                Användares.Add(new Användare
+                {
+                    AnvändareID = "D123",
+                    FullNamn = "Ali",
+                    Lösenord = "123456",
+                    Epost = "AlexNilsson@icloud.com",
+                    BetalningsMetod = "MasterCard",
+                    HyresHistorik = new List<Hyra>
+                    {
+                         new Hyra
+                         {
+                               HyraID = 1,
+                               Kostnad = 200.10,
+                               StartTid = DateTime.Now.AddMonths(-2),
+                                SlutTid = DateTime.Now
+                         }
+                    }
+                });
+            }
+
+
+        }
+
+        public List<SystemAdmin> InitieraSystemAdmin()
+        {
+
+            List<SystemAdmin> systemAdmins = new List<SystemAdmin>()
+            {
+
+                new SystemAdmin
+                {
+                    SystemAdminID = "O123",
+                    FullNamn = "Osama Alhussain",
+                    Lösenord = "1234567",
+                    Epost = "osamaalhussain@icloud.com",
+
+                },
+
+                new SystemAdmin
+                {
+                    SystemAdminID = "V123",
+                    FullNamn = "Varto Kaka",
+                    Lösenord = "123456",
+                    Epost = "vartokaka@icloud.com",
+                }
+
+
+
+            };
+
+            return systemAdmins;
+
         }
 
         public List<Station> HämtaStation()
